@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amphoreus' Saga of Heroes</title>
+<style>
+    body {
+        background: #0b0e14;
+        color: #e6e6e6;
+        font-family: "Courier New", monospace;
+        padding: 20px;
+        line-height: 1.6;
+    }
+
+    #terminal {
+        max-width: 900px;
+        margin: auto;
+        white-space: pre-wrap;
+    }
+
+    .choice {
+        cursor: pointer;
+        margin-top: 6px;
+    }
+
+    .choice:hover {
+        color: #9fd3ff;
+    }
+
+    .italic {
+        font-style: italic;
+    }
+</style>
+</head>
+<body>
+
+<div id="terminal"></div>
+
+<script>
+const terminal = document.getElementById("terminal");
+const TYPE_SPEED = 35; // slower typing (ms per char)
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function typeText(text, newLine = true) {
+    for (let char of text) {
+        terminal.innerHTML += char;
+        window.scrollTo(0, document.body.scrollHeight);
+        await sleep(TYPE_SPEED);
+    }
+    if (newLine) terminal.innerHTML += "\n";
+}
+
+async function systemLog(text) {
+    await typeText(text);
+    await sleep(900);
+}
+
+function showChoices(choices, callback) {
+    choices.forEach((choice, index) => {
