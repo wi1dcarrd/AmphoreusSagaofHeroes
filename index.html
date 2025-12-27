@@ -38,7 +38,7 @@
 
 <script>
 const terminal = document.getElementById("terminal");
-const TYPE_SPEED = 35; // slower typing (ms per char)
+const TYPE_SPEED = 35; 
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -46,11 +46,11 @@ function sleep(ms) {
 
 async function typeText(text, newLine = true) {
     for (let char of text) {
-        terminal.innerHTML += char;
+        terminal.textContent += char;
         window.scrollTo(0, document.body.scrollHeight);
         await sleep(TYPE_SPEED);
     }
-    if (newLine) terminal.innerHTML += "\n";
+    if (newLine) terminal.textContent += "\n";
 }
 
 async function systemLog(text) {
@@ -111,7 +111,7 @@ async function startStory() {
     await typeText("Dan Heng: The pen will eventually break, the ink will run dry, and life will ultimately fade, but thoughts will permanently remain in sagas. Let's walk towards tomorrow together.");
     await sleep(800);
 
-    // Phainon (same line, pause after question)
+    
     await typeText("Phainon: A hero is living in everyone's heart. Embrace it, and chase after the Sun. Did you see?", false);
     await sleep(700);
     await typeText(" Amphoreus has ushered into the dawn.");
@@ -129,10 +129,14 @@ async function startStory() {
             await sleep(600);
 
             await typeText("\nCyrene:");
-            await typeText(
-                "Mhm, friend, and with this, <span class='italic'>As I've Written</span> officially comes to an end.",
-                false
-            );
+            await typeText("Mhm, friend, and with this, ", false);
+
+const italicSpan = document.createElement("span");
+italicSpan.className = "italic";
+italicSpan.textContent = "As I've Written";
+terminal.appendChild(italicSpan);
+
+await typeText(" officially comes to an end.");
             await sleep(600);
             await typeText(" As for what this story means to you and me... Let's keep it close to our hearts.");
             await sleep(1200);
