@@ -60,3 +60,107 @@ async function systemLog(text) {
 
 function showChoices(choices, callback) {
     choices.forEach((choice, index) => {
+        const div = document.createElement("div");
+        div.className = "choice";
+        div.textContent = choice;
+        div.onclick = () => {
+            document.querySelectorAll(".choice").forEach(c => c.remove());
+            callback(index);
+        };
+        terminal.appendChild(div);
+    });
+}
+
+async function startStory() {
+    await systemLog("[Admin Notes.wav] Initializing Amphoreus' Saga of Heroes.exe...");
+    await systemLog("[Admin Notes.wav] Sender: PhiLia093");
+    await systemLog("[Admin Notes.wav] Recipient: Demiurge");
+    await systemLog("[WARNING] SYSTEM OVRERRIDE");
+    await systemLog("[Mem.exe] This book is dedicated to you. And now... it's time to say goodbye to our readers.");
+
+    await typeText("Tribios: Whether it's a sunny day or rainy day, remember to tell yourself before you drift off to sleep: \"See you tomorrow!\". From now on, no more goodbyes.");
+    await sleep(800);
+
+    await typeText("Aglaea: Trust and selflessness are the two most beautiful garments in the world: one to gift others, one to adorn yourself. Thank you for your hard work all this while.");
+    await sleep(800);
+
+    await typeText("Castorice: If your heart still has room to spare, share a bit of gentleness and softly cherish all the beautiful things around you. The place you reside is the gentle sea of flowers.");
+    await sleep(800);
+
+    await typeText("Hyacinthia: Look up at the sky more often and smile more. Many stubborn ailments fear optimism, but it's the best medicine. It is you who healed the sky.");
+    await sleep(800);
+
+    await typeText("Mydeimos: Kill the play, and agmes shall be born. Kill the strife, and glory shall descend. Mydeimos, become king.");
+    await sleep(800);
+
+    await typeText("Cifera: Don't be afraid to fall: just run! Destiny's just a slow-moving nymph. It can't catch you... so, homeward you come, distant wind.");
+    await sleep(800);
+
+    await typeText("Anaxagoras: Truth is a solvent that dissolves all things in the world, and thus cannot objectively exist. I have a brilliant proof for this in mind, but since we're nearing the end of the story, I shall not elaborate. The seeds you've sown are already sprouting.");
+    await sleep(800);
+
+    await typeText("Hysilens: Life is like the ocean: tides rise and fall, and everything eventually dissolves into the waves. So, sing your heart out in every moment of your existence. May the next feast be eternal.");
+    await sleep(800);
+
+    await typeText("Cerydra: Without me, there is no world! Go think, observe... and conquer. The stars shall sing of the great Imperator's journey.");
+    await sleep(800);
+
+    await typeText("March 7th, Evernight: If time is an endless cycle, then forget the bitterness that keeps repeating, and remember only the moments of happiness, we were never apart!");
+    await sleep(800);
+
+    await typeText("Dan Heng: The pen will eventually break, the ink will run dry, and life will ultimately fade, but thoughts will permanently remain in sagas. Let's walk towards tomorrow together.");
+    await sleep(800);
+
+    // Phainon (same line, pause after question)
+    await typeText("Phainon: A hero is living in everyone's heart. Embrace it, and chase after the Sun. Did you see?", false);
+    await sleep(700);
+    await typeText(" Amphoreus has ushered into the dawn.");
+    await sleep(1200);
+
+    await typeText("\nTrailblazer:");
+    await typeText("...");
+    await sleep(600);
+
+    showChoices(
+        ["\"Cyrene?\"", "\"Aren't you... going to say something?\""],
+        async () => {
+            await typeText("\nTrailblazer:");
+            await typeText("...");
+            await sleep(600);
+
+            await typeText("\nCyrene:");
+            await typeText(
+                "Mhm, friend, and with this, <span class='italic'>As I've Written</span> officially comes to an end.",
+                false
+            );
+            await sleep(600);
+            await typeText(" As for what this story means to you and me... Let's keep it close to our hearts.");
+            await sleep(1200);
+
+            showChoices(
+                ["\"(Close the book)\""],
+                async () => {
+                    await typeText("\nTrailblazer & Cyrene:");
+                    await typeText("See you tomorrow, Amphoreus.");
+                    await sleep(1200);
+
+                    await systemLog("[Mem.exe] Once the words are written down and have been read by others, the meaning they carry is no longer in control.");
+                    await systemLog("[Mem.exe] Leaving the freedom of interpretation to every reader who opens it.");
+                    await systemLog("[Mem.exe] Don't you think there's something romantic about it?");
+                    await systemLog("[Mem.exe] Then...");
+                    await systemLog("[Mem.exe] With an unforgettable verse,");
+                    await systemLog("[Mem.exe] You walk toward your tomorrow...");
+                    await systemLog("[Mem.exe] And I");
+                    await systemLog("[Mem.exe] ...walk toward my tomorrow.");
+                    await systemLog("Cyrene: As tomorrow became yesterday.");
+                }
+            );
+        }
+    );
+}
+
+startStory();
+</script>
+
+</body>
+</html>
